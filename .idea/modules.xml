@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/fk-security.iml" filepath="$PROJECT_DIR$/fk-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fk-security-app/fk-security-app.iml" filepath="$PROJECT_DIR$/fk-security-app/fk-security-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fk-security-browser/fk-security-browser.iml" filepath="$PROJECT_DIR$/fk-security-browser/fk-security-browser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fk-security-core/fk-security-core.iml" filepath="$PROJECT_DIR$/fk-security-core/fk-security-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fk-security-demo/fk-security-demo.iml" filepath="$PROJECT_DIR$/fk-security-demo/fk-security-demo.iml" />
+    </modules>
+  </component>
+</project>

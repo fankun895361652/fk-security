@@ -1,0 +1,53 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/security?useUnicode=true&characterEncoding=UTF-8&useSSL=true
+    username: root
+    password: root
+  session:
+    store-type: none
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  redis:
+    host: 192.168.10.134
+    port: 6379
+server:
+  port: 80
+  session:
+    timeout: 600
+#security:
+#  basic:
+#    enabled: false demo-signOut.html
+#自定义表单登录页，如果不配置将会使用默认的登录跳转页
+#fk.security.browser-properties.login-page: /login.html
+#自定义登录类型，如果不配置默认以写死的JSON格式传输
+fk.security.browser-properties.login-type: REDIRECT
+fk.security.browser-properties.sign-up-url: /demo-signUp.html
+fk.security.browser-properties.sign-out-url: /demo-signOut.html
+fk.security.oauth2.oauth2-client[0].client-id: fk
+fk.security.oauth2.oauth2-client[0].client-secret: fksecret
+fk.security.oauth2.oauth2-client[0].exper-time: 7200
+
+fk.security.oauth2.oauth2-client[1].client-id: test
+fk.security.oauth2.oauth2-client[1].client-secret: test
+fk.security.oauth2.oauth2-client[1].exper-time: 3600
+#fk.security.code.image.length: 6
+#fk.security.code.image.width: 100
+#fk.security.code.image.url: /user/*
+fk.security.social.qq.provider-id: callback.do
+fk.security.social.qq.app-id: 101469084
+fk.security.social.qq.app-secret: 4e3bfc47901e2535a719ac92f49bd1fa
+
+fk.security.social.weixin.app-id: wxd99431bbff8305a0
+fk.security.social.weixin.app-secret: 60f78681d063590a469f1b297feff3c4
+
+fk.security.social.filter-processes-url: /qqLogin
+#当代码中有AuthorizationServerConfigurerAdapter 实现类时，将会以代码为准
+#security:
+#  oauth2:
+#    client:
+#      client-id: fk
+#      client-secret: fksecret

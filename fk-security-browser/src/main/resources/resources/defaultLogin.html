@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>默认登录</title>
+</head>
+<body>
+<h3>默认表单登录</h3>
+    <form action="/security/login" method="post">
+        账号：<input type="text" name="username"/><br>
+        密码：<input type="password" name="password"/><br>
+        验证码:<input type="text" name="imageCode"/>
+        <img src="/code/image"><br/>
+        <input type="checkbox" name="remember-me" value="true"/>记住我<br/>
+        <input type="submit" value="提交" name="submit"/>
+    </form>
+<h3>短信验证码登录</h3>
+<form action="/security/sms" method="post">
+    手机号：<input type="text" name="mobile" value="18124651111"/><br>
+    短信验证码:<input type="text" name="smsCode"/><a href="/code/sms?mobile=18124651111">发送验证码</a>
+    <input type="submit" value="提交" name="submit"/>
+</form>
+<br/>
+<h5>社交登录</h5>
+<a href="/qqLogin/callback.do">QQ登录</a>
+<br>
+<a href="/qqLogin/weixin">微信登录</a>
+</body>
+</html>
