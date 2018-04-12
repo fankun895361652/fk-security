@@ -36,6 +36,7 @@ public class AppSignUtils {
      */
     public void saveConnectionData(ServletWebRequest request, ConnectionData data) {
         redisTemplate.opsForValue().set(getKey(request), data, 10, TimeUnit.MINUTES);
+        System.out.println("git test");
     }
 
     /**
