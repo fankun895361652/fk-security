@@ -9,4 +9,5 @@ import lombok.Data;
 @Data
 public class OAuth2Properties {
     private OAuth2ClientProperties [] oauth2Client = {};
+    private String jwtSignKey = "fankun";
 }

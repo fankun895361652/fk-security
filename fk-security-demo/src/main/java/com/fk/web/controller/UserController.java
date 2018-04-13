@@ -5,15 +5,18 @@ package com.fk.web.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fk.security.app.social.AppSignUtils;
+import com.fk.security.core.properties.SecurityProperties;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.Authentication;
 import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +40,9 @@ public class UserController {
 
 	@Autowired
 	private AppSignUtils appSignUtils;
+
+	@Autowired
+	private SecurityProperties securityProperties;
 	
 	@PostMapping("/regist")
 	public void regist(User user, HttpServletRequest request) {
@@ -48,7 +54,12 @@ public class UserController {
 	}
 
 	@GetMapping("/me")
-	public Object getCurrentUser(@AuthenticationPrincipal UserDetails user) {
+	public Object getCurrentUser(Authentication user,HttpServletRequest request) throws Exception {
+		String authorization = request.getHeader("Authorization");
+		String token  = StringUtils.substringAfter("authorization","Bearer ");
+		Claims claims = Jwts.parser().setSigningKey(securityProperties.getOauth2().getJwtSignKey().getBytes("UTF-8")).parseClaimsJws(token).getBody();
+		String company = (String) claims.get("company");
+		System.out.println(company);
 		return user;
 	}
 
